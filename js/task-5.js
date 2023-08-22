@@ -1,74 +1,34 @@
-let price;
-let countryName;
-const country = prompt('Введите страну назначения!');
+// Напиши функцию getAllPropValues(arr, prop),
+// которая получает массив объектов и имя свойства.Возвращает массив значений определенного свойства
+// prop из каждого объекта в массиве.
 
-if (country === null) {
-  console.log('Отменено пользователем!');
-} else {
-  switch (country.toLowerCase()) {
-    case 'китай':
-      countryName = 'Китай';
-      price = 100;
-      break;
-      const checkForSpam = function (message) {
-        const normalizedMessage = message.toLowerCase();
-        const result =
-          normalizedMessage.includes('spam') ||
-          normalizedMessage.includes('sale');
-        //2-var
-        // const result = Boolean(
-        //   normalizedMessage.includes('spam') || normalizedMessage.includes('sale'),
-        // );
-        //3-var
-        //  const result =
-        // normalizedMessage.includes('spam') || normalizedMessage.includes('sale')
-        //   ? true
-        //   : false;
-        //4-var
-        //   let result = false;
-        //   if (normalizedMessage.includes('spam') || normalizedMessage.includes('sale')) {
-        //     result = true;
-        //   }
-        return result;
-      };
+const products = [
+  { name: 'Радар', price: 1300, quantity: 4 },
+  { name: 'Сканер', price: 2700, quantity: 3 },
+  { name: 'Дроид', price: 400, quantity: 7 },
+  { name: 'Захват', price: 1200, quantity: 2 },
+];
 
-      // /*
-      //  * Вызовы функции для проверки работоспособности твоей реализации.
-      //  */
-      console.log(checkForSpam('Latest technology news')); // false
-
-      console.log(checkForSpam('JavaScript weekly newsletter')); // false
-
-      console.log(checkForSpam('Get best sale offers now!')); // true
-
-      console.log(checkForSpam('[SPAM] How to earn fast money?')); // true
-    case 'чили':
-      countryName = 'Чили';
-      price = 250;
-      break;
-
-    case 'австралия':
-      countryName = 'Австралия';
-      price = 170;
-      break;
-
-    case 'индия':
-      countryName = 'Индия';
-      price = 80;
-      break;
-
-    case 'ямайка':
-      countryName = 'Ямайка';
-      price = 120;
-      break;
-
-    default:
-      break;
+const getAllPropValues = function (arr, prop) {
+  // твой код
+  let resultArray = [];
+  for (const product of products) {
+    for (const property in product) {
+      if (property === prop) {
+        resultArray.push(product[property]);
+      } else {
+        continue;
+      }
+    }
   }
+  return resultArray;
+};
 
-  const message =
-    price === undefined
-      ? 'В вашей стране доставка не доступна'
-      : `Доставка в ${countryName} будет стоить ${price} кредитов`;
-  alert(message);
-}
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(getAllPropValues(products, 'name')); // ['Радар', 'Сканер', 'Дроид', 'Захват']
+
+console.log(getAllPropValues(products, 'quantity')); // [4, 3, 7, 2]
+
+console.log(getAllPropValues(products, 'category')); // []

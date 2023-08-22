@@ -1,36 +1,47 @@
-// // Напиши фукцнию findLongestWord(string), которая принимает параметром произвольную строку
-// // (в строке будут только слова и пробелы) и возвращает самое длинное слово в этой строке.
-//---------------------------------------------------------------
-//1-var
-// const findLongestWord = function (string) {
-//   const arrayString = string.split(' ');
-//   let lengthWord = 0;
-//   let indexLongWord = 0;
-//   for (let i = 0; i < arrayString.length; i += 1) {
-//     if (arrayString[i].length > lengthWord) {
-//       lengthWord = arrayString[i].length;
-//       indexLongWord = i;
-//     } else {
-//       continue;
-//     }
-//   }
-//   const longWord = arrayString[indexLongWord];
-//   return longWord;
-// };
-//---------------------------------------------------------------------
-//2-var
-const findLongestWord = function (string) {
-  const arrayString = string.split(' ');
-  let longWord = arrayString[0];
-  for (let i = 1; i < arrayString.length; i += 1) {
-    if (arrayString[i].length > longWord.length) {
-      longWord = arrayString[i];
+// Напиши функцию findBestEmployee(employees), которая принимает объект сотрудников и возвращает
+// имя самого продуктивного(который выполнил больше всех задач).
+// Сотрудники и кол - во выполненых задач содержатся как свойства объекта в формате "имя": "кол-во задач".
+
+const findBestEmployee = function (employees) {
+  // твой код
+  let nameEmployee;
+  let taskComplete = 0;
+  for (const key in employees) {
+    if (employees[key] > taskComplete) {
+      nameEmployee = key;
+      taskComplete = employees[key];
+    } else {
+      continue;
     }
   }
-
-  return longWord;
+  return nameEmployee;
 };
 
-console.log(findLongestWord('Google do a roll'));
-console.log(findLongestWord('The quick brown fox jumped over the lazy dog'));
-console.log(findLongestWord('May the force be with you'));
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(
+  findBestEmployee({
+    ann: 29,
+    david: 35,
+    helen: 1,
+    lorence: 99,
+  }),
+); // lorence
+
+console.log(
+  findBestEmployee({
+    poly: 12,
+    mango: 17,
+    ajax: 4,
+  }),
+); // mango
+
+console.log(
+  findBestEmployee({
+    lux: 147,
+    david: 21,
+    kiwi: 19,
+    chelsy: 38,
+  }),
+); // lux
