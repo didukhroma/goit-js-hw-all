@@ -1,23 +1,45 @@
-const credits = 23580;
-const pricePerDroid = 3000;
-let totalPrice;
-let balance;
+const lengthString = 40;
+// 1-var
+const formatString = function (string) {
+  let cutString = string.slice(0, lengthString);
+  if (string.length > lengthString) {
+    let newString = cutString + '...';
+    return newString;
+  } else {
+    return string;
+  }
+};
+//2-VAR
+// const formatString = function (string) {
+//   console.log(string);
+//   let arrayString = string.split('');
+//   if (arrayString.length > lengthString) {
+//     let newArray = arrayString.splice(0, lengthString);
+//     newArray.splice(lengthString, 0, '...');
+//     // newArray.push('...');
+//     const newString = newArray.join('');
 
-const value = prompt('Введите количество дроидов!');
+//     return newString;
+//   } else {
+//     return string;
+//   }
+// };
 
-if (value === null) {
-  console.log('Отменено пользователем!');
-} else if (Number.isNaN(Number(value))) {
-  console.log('Некоректное число! ');
-} else if (Number(value) === 0 || Number(value) < 0) {
-  console.log('Введите число больше 0!');
-} else {
-  totalPrice = Number(value) * pricePerDroid;
-  balance = credits - totalPrice;
-  const message =
-    totalPrice > credits
-      ? 'Недостаточно средств на счету!'
-      : `Вы купили ${value} дроидов, на счету осталось ${balance} кредитов.`;
+// /*
+//  * Вызовы функции для проверки работоспособности твоей реализации.
+//  */
+console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
+// // вернется оригинальная строка
 
-  console.log(message);
-}
+console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
+// вернется форматированная строка
+
+console.log(formatString('Curabitur ligula sapien.'));
+// вернется оригинальная строка
+
+console.log(
+  formatString(
+    'Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.',
+  ),
+);
+// вернется форматированная строка
