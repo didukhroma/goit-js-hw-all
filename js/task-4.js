@@ -1,45 +1,42 @@
-const lengthString = 40;
-// 1-var
-const formatString = function (string) {
-  let cutString = string.slice(0, lengthString);
-  if (string.length > lengthString) {
-    let newString = cutString + '...';
-    return newString;
-  } else {
-    return string;
-  }
-};
-//2-VAR
-// const formatString = function (string) {
-//   console.log(string);
-//   let arrayString = string.split('');
-//   if (arrayString.length > lengthString) {
-//     let newArray = arrayString.splice(0, lengthString);
-//     newArray.splice(lengthString, 0, '...');
-//     // newArray.push('...');
-//     const newString = newArray.join('');
+// Напиши функцию countTotalSalary(employees) принимающую объект зарплат.
+// Функция считает общую сумму запрплаты работников и возращает ее.Каждое поле объекта,
+//     передаваемого в функцию, имеет вид "имя": "зарплата".
 
-//     return newString;
-//   } else {
-//     return string;
+// const countTotalSalary = function (employees) {
+//   let summ = 0;
+//   for (const salary in employees) {
+//     summ += employees[salary];
 //   }
+//   return summ;
+//   // твой код
 // };
 
-// /*
-//  * Вызовы функции для проверки работоспособности твоей реализации.
-//  */
-console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
-// // вернется оригинальная строка
-
-console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
-// вернется форматированная строка
-
-console.log(formatString('Curabitur ligula sapien.'));
-// вернется оригинальная строка
+const countTotalSalary = function (employees) {
+  const arrEmployees = Object.values(employees);
+  let sum = 0;
+  for (const salary of arrEmployees) {
+    sum += salary;
+  }
+  return sum;
+  // твой код
+};
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(countTotalSalary({})); // 0
 
 console.log(
-  formatString(
-    'Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.',
-  ),
-);
-// вернется форматированная строка
+  countTotalSalary({
+    mango: 100,
+    poly: 150,
+    alfred: 80,
+  }),
+); // 330
+
+console.log(
+  countTotalSalary({
+    kiwi: 200,
+    lux: 50,
+    chelsy: 150,
+  }),
+); // 400

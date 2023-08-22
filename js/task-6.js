@@ -1,64 +1,32 @@
-let input;
-let total = 0;
+// Напиши функцию calculateTotalPrice(allProdcuts, productName),
+//     которая получает массив объектов и имя продукта(значение свойства name).
+// Возвращает общую стоимость продукта(цена * количество).
 
-while (true) {
-  input = prompt('Введите число!');
-  const inputNumber = Number(input);
-  const inputNotANumber = Number.isNaN(inputNumber);
+// Вызовы функции для проверки работоспособности твоей реализации.
 
-  if (input === null) {
-    alert(`Общая сумма чисел равна ${total}`);
-    break;
-  } else if (inputNotANumber) {
-    alert(`Введено не число. Введите число`);
-    continue;
-  } else {
-    total += inputNumber;
-    let input;
-    const numbers = [];
-    let total = 0;
+const products = [
+  { name: 'Радар', price: 1300, quantity: 4 },
+  { name: 'Сканер', price: 2700, quantity: 3 },
+  { name: 'Дроид', price: 400, quantity: 7 },
+  { name: 'Захват', price: 1200, quantity: 2 },
+];
 
-    // 1-var
-    while (true) {
-      input = prompt('Введите число!');
-      if (input === '') {
-        alert('Введите не пуcтое значение');
-        continue;
-      }
-      const inputNumber = Number(input);
-      console.log(inputNumber);
-      const inputNotANumber = Number.isNaN(inputNumber);
-
-      if (input === null) {
-        for (const number of numbers) {
-          total += number;
-        }
-
-        const message =
-          numbers.length === 0
-            ? `Отменено пользователем`
-            : `Общая сумма чисел равна ${total}`;
-
-        console.log(message);
-        break;
-      }
-      if (inputNotANumber) {
-        alert('Было введено не число, попробуйте еще раз');
-        continue;
-      }
-      numbers.push(inputNumber);
-      console.log(numbers);
+const calculateTotalPrice = function (allProdcuts, productName) {
+  // твой код
+  let result = 0;
+  for (const product of products) {
+    if (product.name === productName) {
+      result = product.price * product.quantity;
+    } else {
+      continue;
     }
-
-    // // 2-var
-    // while (true) {
-    //   input = prompt('Введите число!');
-    //   const inputNumber = Number(input);
-    //   const inputNotANumber = Number.isNaN(inputNumber);
-
-    //   if (input === null)
-    // }
-
-    // const addNumberToArray = inputNumber => numbers.push(inputNumber);
   }
-}
+  return result;
+};
+
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(calculateTotalPrice(products, 'Радар')); // 5200
+
+console.log(calculateTotalPrice(products, 'Дроид')); // 2800
